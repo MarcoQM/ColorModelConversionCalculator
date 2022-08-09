@@ -4,38 +4,33 @@
 #include <vector>
 #include <iostream>
 
-template<typename Type=float>
 class HSL //Pixel//Color
 {
 public:
     HSL();
-    HSL(Type h, Type c, Type l);
+    HSL(float h, float c, float l);
 
-    const Type& operator[](unsigned index) const {return Channels[index];}
-    Type& operator[](unsigned index) {return Channels[index];}
+    const float& operator[](unsigned index) const {return Channels[index];}
+    float& operator[](unsigned index) {return Channels[index];}
 
-    using ValueType = Type;
-
-    friend std::ostream& operator<<(std::ostream&  output, const HSL<Type>& hsl)
+    friend std::ostream& operator<<(std::ostream&  output, const HSL& hsl)
     {
-        output<<static_cast<float>(hsl.Channels[0])<<" "<<static_cast<float>(hsl.Channels[1])<<" "<<static_cast<float>(hsl.Channels[2]);
+        output<<hsl.Channels[0]<<" "<<hsl.Channels[1]<<" "<<hsl.Channels[2];
         return output;
     }
 
 private:
 
-    std::vector<Type> Channels{}; //vector size 3
+    std::vector<float> Channels{}; //vector size 3
 
 };
 
-template<typename Type>
-HSL<Type>::HSL(): Channels{std::vector<Type>(3, {})}
+HSL::HSL(): Channels{std::vector<float>(3, {})}
 {
 
 }
 
-template<typename Type>
-HSL<Type>::HSL(Type h, Type s, Type l): Channels{h, s, l}
+HSL::HSL(float h, float s, float l): Channels{h, s, l}
 {
 
 }

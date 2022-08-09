@@ -4,38 +4,33 @@
 #include <vector>
 #include <iostream>
 
-template<typename Type=float>
 class LAB //Pixel//Color
 {
 public:
     LAB();
-    LAB(Type l, Type a, Type b);
+    LAB(float l, float a, float b);
 
-    const Type& operator[](unsigned index) const {return Channels[index];}
-    Type& operator[](unsigned index) {return Channels[index];}
+    const float& operator[](unsigned index) const {return Channels[index];}
+    float& operator[](unsigned index) {return Channels[index];}
 
-    using ValueType = Type;
-
-    friend std::ostream& operator<<(std::ostream&  output, const LAB<Type>& lab)
+    friend std::ostream& operator<<(std::ostream&  output, const LAB& lab)
     {
-        output<<static_cast<float>(lab.Channels[0])<<" "<<static_cast<float>(lab.Channels[1])<<" "<<static_cast<float>(lab.Channels[2]);
+        output<<lab.Channels[0]<<" "<<lab.Channels[1]<<" "<<lab.Channels[2];
         return output;
     }
 
 private:
 
-    std::vector<Type> Channels{}; //vector size 3
+    std::vector<float> Channels{}; //vector size 3
 
 };
 
-template<typename Type>
-LAB<Type>::LAB(): Channels{std::vector<Type>(3, {})}
+LAB::LAB(): Channels{std::vector<float>(3, {})}
 {
 
 }
 
-template<typename Type>
-LAB<Type>::LAB(Type l, Type a, Type b): Channels{l, a, b}
+LAB::LAB(float l, float a, float b): Channels{l, a, b}
 {
 
 }

@@ -4,39 +4,33 @@
 #include <vector>
 #include <iostream>
 
-template<typename Type=float>
 class CMYK //Pixel//Color
 {
 public:
     CMYK();
-    CMYK(Type c, Type m, Type y, Type k);
+    CMYK(float c, float m, float y, float k);
 
-    const Type& operator[](unsigned index) const {return Channels[index];}
-    Type& operator[](unsigned index) {return Channels[index];}
+    const float& operator[](unsigned index) const {return Channels[index];}
+    float& operator[](unsigned index) {return Channels[index];}
 
-
-    using ValueType = Type;
-
-    friend std::ostream& operator<<(std::ostream&  output, const CMYK<Type>& cmyk)
+    friend std::ostream& operator<<(std::ostream&  output, const CMYK& cmyk)
     {
-        output<<static_cast<float>(cmyk.Channels[0])<<" "<<static_cast<float>(cmyk.Channels[1])<<" "<<static_cast<float>(cmyk.Channels[2])<<" "<<static_cast<float>(cmyk.Channels[3]);
+        output<<cmyk.Channels[0]<<" "<<cmyk.Channels[1]<<" "<<cmyk.Channels[2]<<" "<<cmyk.Channels[3];
         return output;
     }
 
 private:
 
-    std::vector<Type> Channels{}; //vector size 4
+    std::vector<float> Channels{}; //vector size 4
 
 };
 
-template<typename Type>
-CMYK<Type>::CMYK(): Channels{std::vector<Type>(4, {})}
+CMYK::CMYK(): Channels{std::vector<float>(4, {})}
 {
 
 }
 
-template<typename Type>
-CMYK<Type>::CMYK(Type c, Type m, Type y, Type k): Channels{c, m, y, k}
+CMYK::CMYK(float c, float m, float y, float k): Channels{c, m, y, k}
 {
 
 }
