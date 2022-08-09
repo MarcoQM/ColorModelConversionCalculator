@@ -382,19 +382,7 @@ int main(int argc, char *argv[])
 
 
     //RGBtoGrayV2(value1, value2, value3);
-    unsigned r = 119;
-    unsigned g = 108;
-    unsigned b = 66;
 
-    float h = 0.13522;
-    float s = 0.286486;
-    float l = 0.362745;
 
-    //std::cout<<r<<" "<<g<<" "<<b<<std::endl;
-    RGBtoXYZ(39, 225, 177);
-    XYZtoLAB(0.356977, 0.574561, 0.508036);
-    LABtoXYZ(5.18999, -7.74767, 1.68163);
-
-    //XYZtoLAB(80.4354, -54.9244, 11.146);
     return 0;
 }
