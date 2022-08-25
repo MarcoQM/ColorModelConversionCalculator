@@ -341,6 +341,11 @@ CMYK ColorConverter::RGBtoCMYKv3(RGB& rgb)
     float y = 1.0f - (b / 255.0f);
     float k = std::min(c, std::min(m, y));
 
+    std::cout<<c<<std::endl;
+    std::cout<<m<<std::endl;
+    std::cout<<y<<std::endl;
+    std::cout<<k<<std::endl;
+
     float c3 = c - (sk * k);
     float m3 = m - (sk * k);
     float y3 = y - (sk * k);
@@ -390,6 +395,7 @@ XYZ ColorConverter::RGBtoXYZ(RGB& rgb)
     float rLinear = cLinear(rr);
     float gLinear = cLinear(gg);
     float bLinear = cLinear(bb);
+
 
     // x, y, z en D65
     float x = 0.4124 * rLinear + 0.3576 * gLinear + 0.1805 * bLinear;
